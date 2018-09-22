@@ -1,18 +1,18 @@
 #include "seriesapplication.h"
 
+#include "webserver.h"
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "httpclientconnection.h"
 
-SeriesApplication::SeriesApplication(const QJsonObject &config, QObject *parent) :
-    WebApplication(parent)
+SeriesApplication::SeriesApplication(const QJsonObject &config, WebServer &webServer) :
+    WebApplication(&webServer), m_webServer(webServer)
 {
-
+    Q_UNUSED(config)
 }
 
 void SeriesApplication::start()
 {
-
 }
 
 void SeriesApplication::handleRequest(HttpClientConnection *connection, const HttpRequest &request)

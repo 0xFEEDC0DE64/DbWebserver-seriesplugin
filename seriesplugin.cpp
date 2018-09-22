@@ -13,7 +13,7 @@ QString SeriesPlugin::pluginName() const
     return QStringLiteral("series");
 }
 
-WebApplication *SeriesPlugin::createApplication(const QJsonObject &config) const
+WebApplication *SeriesPlugin::createApplication(const QJsonObject &config, WebServer &webServer) const
 {
-    return new SeriesApplication(config);
+    return new SeriesApplication(config, webServer);
 }
