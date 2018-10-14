@@ -8,6 +8,14 @@ set(SOURCES
     seriesplugin.cpp
 )
 
-add_library(seriesplugin SHARED ${HEADERS} ${SOURCES})
+set(OTHER_FILES
+    seriesplugin.json
+)
 
-target_link_libraries(seriesplugin Qt5::Core Qt5::Network webserverlib)
+add_library(webserver-plugins-seriesplugin SHARED ${HEADERS} ${SOURCES} ${OTHER_FILES})
+
+set_target_properties(webserver-plugins-seriesplugin PROPERTIES OUTPUT_NAME seriesplugin PREFIX "")
+
+target_link_libraries(webserver-plugins-seriesplugin Qt5::Core Qt5::Network webserverlib)
+
+add_dependencies(webserver-plugins webserver-plugins-seriesplugin)
